@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.example.greenpulse.BaseActivity;
 import com.example.greenpulse.R;
 import com.example.greenpulse.adapters.OnBoardAdapter;
 import com.example.greenpulse.databinding.ActivityOnBoardingBinding;
@@ -16,7 +17,7 @@ import com.example.greenpulse.models.OnBoardItem;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OnBoardingActivity extends AppCompatActivity {
+public class OnBoardingActivity extends BaseActivity {
 
     OnBoardAdapter adapter;
     List<OnBoardItem> boardItems;
@@ -26,7 +27,6 @@ public class OnBoardingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityOnBoardingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ActionBar actionBar= getSupportActionBar();
         if(actionBar!=null) actionBar.hide();
 

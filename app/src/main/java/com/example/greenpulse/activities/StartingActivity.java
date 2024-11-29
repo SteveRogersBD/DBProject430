@@ -7,11 +7,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.greenpulse.BaseActivity;
 import com.example.greenpulse.MainActivity;
 import com.example.greenpulse.R;
 import com.example.greenpulse.databinding.ActivityStartingBinding;
 
-public class StartingActivity extends AppCompatActivity {
+public class StartingActivity extends BaseActivity {
 
     ActivityStartingBinding binding;
     @Override
