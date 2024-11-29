@@ -35,4 +35,5 @@
 
     <!-- Custom Button Background Color -->
     <color name="colorButtonPrimary">#4CAF50</color> <!-- Bright Green for primary buttons -->
+    <color name="buttonSecondary">#202437</color>
 </resources>

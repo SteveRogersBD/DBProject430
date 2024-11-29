@@ -6,4 +6,6 @@
     <string name="map">Mapping Your Way to Healthier Harvests</string>
     <string name="bot">AgriHelp: Your AI Farming Expert</string>
     <string name="social">AgriConnect: Share, React, and Connect with Farmers Worldwide</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
