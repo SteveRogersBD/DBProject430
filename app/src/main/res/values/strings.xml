@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">GreenPulse</string>
+    <string name="app_slogan">Sow Success, Reap Innovation!</string>
+    <string name="disease_analyzer">Sick Leaf Scanner</string>
+    <string name="trends">AgriPulse:Stay Updated with Farming Trends</string>
+    <string name="map">Mapping Your Way to Healthier Harvests</string>
+    <string name="bot">AgriHelp: Your AI Farming Expert</string>
+    <string name="social">AgriConnect: Share, React, and Connect with Farmers Worldwide</string>
+</resources>
