@@ -36,4 +36,6 @@
     <!-- Custom Button Background Color -->
     <color name="colorButtonPrimary">#4CAF50</color> <!-- Bright Green for primary buttons -->
     <color name="buttonSecondary">#202437</color>
+    <!-- res/color/tab_icon_selector.xml -->
+
 </resources>

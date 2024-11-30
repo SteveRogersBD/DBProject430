@@ -1,14 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.HomeFragment">
+    tools:context=".fragments.HomeFragment"
+    android:background="@android:color/transparent"
+    android:padding="5dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- SearchView on Top -->
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_view_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:queryHint="Search here..."
+        android:iconifiedByDefault="false"
+        android:padding="5dp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- ScrollView for Remaining Layout -->
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_below="@id/search_view_home"
+        android:fillViewport="true">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Horizontal RecyclerView for Text Headers -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/text_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp" />
+
+            <!-- LinearLayout Header for Videos -->
+            <LinearLayout
+                android:id="@+id/top_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="YouTube Videos"
+                    android:textSize="20sp"
+                    android:padding="5dp"
+                    android:layout_marginRight="5dp" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/white" />
+            </LinearLayout>
+
+            <!-- RecyclerView for YouTube Videos -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/video_recycler_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp" />
+
+            <!-- LinearLayout Header for Articles -->
+            <LinearLayout
+                android:id="@+id/middle_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Articles"
+                    android:textSize="20sp"
+                    android:padding="5dp"
+                    android:layout_marginRight="5dp" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/white" />
+            </LinearLayout>
+
+            <!-- RecyclerView for Articles -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/news_recycler_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
