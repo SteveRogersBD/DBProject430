@@ -42,4 +42,9 @@
         <item name="android:windowBackground">@color/white</item>
         <item name="android:windowMinWidthMajor">90%</item>
     </style>
+    <style name="PickerStyle">
+        <item name="android:tint">@color/buttonSecondary</item>
+    </style>
+
+
 </resources>

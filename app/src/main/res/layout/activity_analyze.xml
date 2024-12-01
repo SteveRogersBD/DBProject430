@@ -6,16 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".activities.AnalyzeActivity"
     android:background="@drawable/grad_3"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:orientation="vertical">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@android:color/transparent"
+        android:id="@+id/toolbar">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Analyze"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:padding="5dp"/>
+
+    </com.google.android.material.appbar.MaterialToolbar>
 
     <ImageView
         android:id="@+id/picker"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:src="@drawable/baseline_image_24"
-        app:tint="@color/buttonSecondary"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:padding="10dp"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -124,7 +137,7 @@
                 android:layout_marginBottom="16dp"
                 android:background="@color/white">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/materialEditTextDescription"
+                    android:id="@+id/symptom_ET"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine"
@@ -142,7 +155,7 @@
                 android:layout_marginBottom="16dp"
                 android:background="@color/white">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/materialEditTextNotes"
+                    android:id="@+id/add_note_ET"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine"
@@ -151,7 +164,15 @@
                     android:padding="8dp"
                     android:gravity="center"/>
             </com.google.android.material.textfield.TextInputLayout>
-
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/analyze_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Analyze"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                />
         </LinearLayout>
     </ScrollView>
 
