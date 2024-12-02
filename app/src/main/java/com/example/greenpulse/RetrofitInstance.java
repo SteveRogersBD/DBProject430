@@ -16,9 +16,15 @@ public class RetrofitInstance {
             baseUrl("https://serpapi.com/").
             addConverterFactory(GsonConverterFactory.create())
             .build();
+    public static final Retrofit WeatherFit = new Retrofit.Builder().
+            baseUrl("https://api.weatherbit.io/v2.0/forecast/").
+            addConverterFactory(GsonConverterFactory.create())
+            .build();
+
 
     public static VideoApi videoApi(){
         return VideoFit.create(VideoApi.class);
     }
     public static NewsApi newsApi(){return NewsFit.create(NewsApi.class);}
+
 }

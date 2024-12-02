@@ -1,5 +1,6 @@
 package com.example.greenpulse.apiInterfaces;
 
+import com.example.greenpulse.responses.ImageResponse;
 import com.example.greenpulse.responses.NewsResponse;
 
 import retrofit2.Call;
@@ -13,4 +14,9 @@ public interface NewsApi {
                               @Query("q") String query,
                               @Query("gl") String gl,
                               @Query("hl") String hl);
+
+    @GET("search.json")
+    Call<ImageResponse>getImages(@Query("api_key") String apiKey,
+                                 @Query("engine") String engine,
+                                 @Query("q") String query);
 }

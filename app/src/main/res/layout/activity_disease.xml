@@ -9,7 +9,8 @@
     <include layout="@layout/toolbar_layout"
         android:layout_alignParentTop="true"
         tools:ignore="IncludeLayoutParam"
-        android:id="@+id/toolbar_disease"/>
+        android:id="@+id/toolbar_disease"
+        />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -57,7 +58,9 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
             <TextView
+                android:layout_marginTop="25dp"
                 android:id="@+id/disease_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -67,7 +70,6 @@
                 android:textSize="18sp"
                 android:lineSpacingExtra="3dp"
                 android:justificationMode="inter_word"/>
-
            <LinearLayout
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
@@ -78,7 +80,7 @@
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:text="Related Images"
-                   android:textSize="18sp"
+                   android:textSize="25sp"
                    android:layout_marginRight="3dp"
                    />
                <View
@@ -90,10 +92,22 @@
 
            </LinearLayout>
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:id="@+id/image_view_pager"/>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <androidx.viewpager2.widget.ViewPager2
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:id="@+id/image_view_pager"/>
+                <ProgressBar
+                    android:id="@+id/load_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:visibility="invisible"/>
+            </RelativeLayout>
+
+
 
             <!-- Symptoms                      -->
             <LinearLayout
@@ -106,7 +120,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Symptoms"
-                    android:textSize="18sp"
+                    android:textSize="25sp"
                     android:layout_marginRight="3dp"
                     />
                 <View
@@ -139,7 +153,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Potential Threat"
-                    android:textSize="18sp"
+                    android:textSize="25sp"
                     android:layout_marginRight="3dp"
                     />
                 <View
@@ -174,7 +188,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Prevention"
-                    android:textSize="18sp"
+                    android:textSize="25sp"
                     android:layout_marginRight="3dp"
                     />
                 <View
@@ -209,7 +223,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Treatment"
-                    android:textSize="18sp"
+                    android:textSize="25sp"
                     android:layout_marginRight="3dp"
                     />
                 <View
@@ -245,7 +259,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Post Disease Management"
-                    android:textSize="18sp"
+                    android:textSize="25sp"
                     android:layout_marginRight="3dp"
                     />
                 <View
@@ -280,7 +294,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Related Articles"
-                    android:textSize="18sp"
+                    android:textSize="25sp"
                     android:layout_marginRight="3dp"
                     />
                 <View
@@ -291,10 +305,22 @@
                     />
 
             </LinearLayout>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/articles_recycler"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"/>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/articles_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/load_news"
+                    android:layout_centerInParent="true"
+                    android:visibility="gone"
+                    />
+            </RelativeLayout>
+
 
             <!-- Related Articles                      -->
 

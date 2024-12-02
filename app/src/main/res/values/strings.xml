@@ -9,7 +9,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="newApiKey">b1b89a97d5b53bcf603f30605a895072b32ea6b9a2343377f4a8532df5679cdf</string>
+    <string name="newApiKey">1f9781e9874d7a3e2dc161fafe499479b7c00e22706d5b01210f84ed8658b573</string>
 
     <string name="prevention">To prevent early blight in tomatoes, practice crop rotation, avoiding planting tomatoes in the same soil consecutively. Use disease-resistant varieties and ensure proper spacing for air circulation. Apply a balanced fertilizer to strengthen plants, but avoid excessive nitrogen, which promotes susceptibility. Water at the base to keep foliage dry and prune lower leaves to prevent soil contact. Mulch to minimize soil splashing onto leaves. Remove and dispose of infected plants immediately to prevent spread. Use fungicides like copper-based sprays as a preventive measure. Regularly inspect plants and maintain a clean garden to reduce fungal spores in the environment.</string>
 
@@ -42,4 +42,5 @@ along with removing infected plants to minimize spread.
         * Using fungicides as a last resort\n
     </string>
 
+    <string name="weatherKey">e6f8919ca059484eb64df59a75658e79</string>
 </resources>

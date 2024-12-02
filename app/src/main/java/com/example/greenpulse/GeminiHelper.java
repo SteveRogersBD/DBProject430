@@ -13,7 +13,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 public class GeminiHelper {
-    private final String apiKey = "AIzaSyD-mWV8ipg5hbKHOCN1-EtHbA5qiWdBfH4";
+    private final String apiKey = "AIzaSyDVt6V-K2MD7k7vZZ8fC_P6mHeS0kYKutw";
     private final int TEXT = 1;
     private final int IMAGE = 2;
     public GeminiHelper() {
