@@ -16,9 +16,14 @@ public class WeatherApiUtil {
     public static final WeatherApi weatherApi = RetrofitInstance.WeatherFit.create(WeatherApi.class);;
     public static final int DAILY = 1;
     public static final int FORECAST = 2;
-    Context context;
+    public Context context;
+    public WeatherApiUtil(){}
 
-    public <T> void getWeather(double lat, double lon,int tag,WeatherCallBack callBack)
+    public WeatherApiUtil(Context context) {
+        this.context = context;
+    }
+
+    public <T> void getWeather(double lat, double lon, int tag, WeatherCallBack callBack)
     {
         Call<T>call = null;
         if(tag==DAILY)

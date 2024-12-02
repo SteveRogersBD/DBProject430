@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.HomeFragment"
     android:background="@android:color/transparent"
+    android:orientation="vertical"
     android:padding="5dp">
 
     <!-- SearchView on Top -->
@@ -12,7 +13,6 @@
         android:id="@+id/search_view_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:queryHint="Search here..."
         android:iconifiedByDefault="false"
         android:padding="5dp"
@@ -91,7 +91,34 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp" />
 
+            <!-- LinearLayout Header for Articles -->
+            <LinearLayout
+                android:id="@+id/bottom_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Weekly Weather Forecast"
+                    android:textSize="20sp"
+                    android:padding="5dp"
+                    android:layout_marginRight="5dp" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/white" />
+            </LinearLayout>
+
+            <!-- RecyclerView for Articles -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/weather_recycler_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp" />
+
         </LinearLayout>
     </ScrollView>
 
-</RelativeLayout>
+</LinearLayout>

@@ -2,6 +2,7 @@ package com.example.greenpulse;
 
 import com.example.greenpulse.apiInterfaces.NewsApi;
 import com.example.greenpulse.apiInterfaces.VideoApi;
+import com.example.greenpulse.apiInterfaces.WeatherApi;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -17,7 +18,7 @@ public class RetrofitInstance {
             addConverterFactory(GsonConverterFactory.create())
             .build();
     public static final Retrofit WeatherFit = new Retrofit.Builder().
-            baseUrl("https://api.weatherbit.io/v2.0/forecast/").
+            baseUrl("https://api.weatherbit.io/v2.0/").
             addConverterFactory(GsonConverterFactory.create())
             .build();
 
@@ -26,5 +27,6 @@ public class RetrofitInstance {
         return VideoFit.create(VideoApi.class);
     }
     public static NewsApi newsApi(){return NewsFit.create(NewsApi.class);}
+    public static WeatherApi weatherApi(){return WeatherFit.create(WeatherApi.class);}
 
 }
