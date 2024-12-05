@@ -244,6 +244,7 @@ public class HomeFragment extends Fragment {
 
     private void retrieveLocation(String[] location) {
         location[0] = sp.getString("lat", null);
+        location[1] = sp.getString("lon", null);
     }
 }
 

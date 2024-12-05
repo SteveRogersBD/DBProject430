@@ -20,16 +20,25 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".activities.DiseaseActivity"
+            android:name=".activities.FBPracActivity"
             android:exported="true">
+
         </activity>
+        <activity
+            android:name=".activities.MapActivity"
+            android:exported="true">
+
+
+        </activity>
+        <activity
+            android:name=".activities.DiseaseActivity"
+            android:exported="true" />
         <activity
             android:name=".OtherActivity"
             android:exported="false" />
         <activity
             android:name=".activities.AnalyzeActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".BaseActivity"
             android:exported="false" />
@@ -47,9 +56,6 @@
             android:exported="false" />
         <activity
             android:name=".activities.SignUpActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -57,6 +63,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

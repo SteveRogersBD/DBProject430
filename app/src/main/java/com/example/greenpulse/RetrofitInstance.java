@@ -1,5 +1,6 @@
 package com.example.greenpulse;
 
+import com.example.greenpulse.apiInterfaces.GPApi;
 import com.example.greenpulse.apiInterfaces.NewsApi;
 import com.example.greenpulse.apiInterfaces.VideoApi;
 import com.example.greenpulse.apiInterfaces.WeatherApi;
@@ -22,11 +23,16 @@ public class RetrofitInstance {
             addConverterFactory(GsonConverterFactory.create())
             .build();
 
+    public static final Retrofit GPFit = new Retrofit.Builder().
+            baseUrl("http://192.168.1.249:8080/").
+            addConverterFactory(GsonConverterFactory.create())
+            .build();
 
     public static VideoApi videoApi(){
         return VideoFit.create(VideoApi.class);
     }
     public static NewsApi newsApi(){return NewsFit.create(NewsApi.class);}
     public static WeatherApi weatherApi(){return WeatherFit.create(WeatherApi.class);}
+    public static GPApi gpApi(){return GPFit.create(GPApi.class);}
 
 }
