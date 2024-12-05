@@ -76,7 +76,7 @@ public class HomeFragment extends Fragment {
         askLocationPermission();
         addTheHeaders();
         initializeRecyclerViews();
-        getVideos();
+        //getVideos();
         updateNewsArticles("Farming & Agriculture");
         return binding.getRoot();
     }
@@ -165,13 +165,13 @@ public class HomeFragment extends Fragment {
                     }
                     videoAdapter.notifyDataSetChanged();
                 } else {
-                    Toast.makeText(requireContext(), "Failed to load videos", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(requireContext(), "Failed to load videos", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<YouTubeResponse> call, Throwable throwable) {
-                Toast.makeText(requireContext(), "Failed to load videos: " + throwable.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(requireContext(), "Failed to load videos: " + throwable.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

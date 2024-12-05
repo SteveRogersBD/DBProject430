@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //logic related to the tabLayout
+        binding.viewPager.setOffscreenPageLimit(1);
         binding.tabMode.setupWithViewPager(binding.viewPager);
         vpAdapter = new VPAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         vpAdapter.addFragment(new HomeFragment(),"Home");
