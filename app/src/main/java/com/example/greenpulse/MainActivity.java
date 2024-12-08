@@ -1,17 +1,25 @@
 package com.example.greenpulse;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.example.greenpulse.activities.AnalyzeActivity;
+import com.example.greenpulse.activities.ChatBotActivity;
+import com.example.greenpulse.activities.MapActivity;
 import com.example.greenpulse.adapters.VPAdapter;
 import com.example.greenpulse.databinding.ActivityMainBinding;
 import com.example.greenpulse.fragments.HomeFragment;
 import com.example.greenpulse.fragments.MediaFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,7 +49,33 @@ public class MainActivity extends AppCompatActivity {
         vpAdapter.addFragment(new MediaFragment(),"Agri World");
         binding.viewPager.setAdapter(vpAdapter);
 
+        binding.bottomBar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id= item.getItemId();
+                if(id==R.id.analyze_bottom)
+                {
+                    startActivity(new Intent(MainActivity.this, AnalyzeActivity.class));
+                    overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+                }
+                else if(id==R.id.map_bottom)
+                {
+                    startActivity(new Intent(MainActivity.this, MapActivity.class));
+                    overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
 
+                }else if(id==R.id.schedule_bottom)
+                {
+                    startActivity(new Intent(MainActivity.this, AnalyzeActivity.class));
+                    overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+                }
+                else if(id==R.id.bot_bottom)
+                {
+                    startActivity(new Intent(MainActivity.this, ChatBotActivity.class));
+                    overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+                }
+                return false;
+            }
+        });
 
     }
 }

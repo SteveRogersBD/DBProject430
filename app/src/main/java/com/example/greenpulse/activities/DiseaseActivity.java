@@ -43,13 +43,13 @@ public class DiseaseActivity extends OtherActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityDiseaseBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        //Intent intent = getIntent();
-        //String disease = intent.getStringExtra("disease");
-        //String crop = intent.getStringExtra("crop");
+        Intent intent = getIntent();
+        String diseaseNameS = intent.getStringExtra("disease");
+        String cropS = intent.getStringExtra("crop");
         disease = new Disease();
-        disease.name = "Early Blight";
+        disease.name = diseaseNameS;
         binding.diseaseName.setText(disease.name);
-        crop = "Tomato";
+        crop = cropS;
         gm = new GeminiHelper();
         newsApiUtil = new NewsApiUtil(DiseaseActivity.this);
 

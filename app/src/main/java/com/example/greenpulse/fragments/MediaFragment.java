@@ -56,14 +56,12 @@ public class MediaFragment extends Fragment {
                     postAdapter = new PostAdapter(getContext(),response.body().data);
                     binding.postRecycler.setAdapter(postAdapter);
                     binding.postRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-                    Toast.makeText(getContext(), "Success from media", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<AllPostResponse> call, Throwable throwable) {
-                //Toast.makeText(getContext(), "Error from media",
-                        //Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), throwable.getLocalizedMessage(),Toast.LENGTH_LONG).show();
             }
         });
     }

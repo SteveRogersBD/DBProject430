@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.greenpulse.MainActivity;
 import com.example.greenpulse.R;
+import com.example.greenpulse.fragments.HomeFragment;
 
 import java.util.List;
 
@@ -39,7 +40,6 @@ public class TextAdapter extends RecyclerView.Adapter<TextAdapter.ViewHolder>{
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //
             }
         });
     }

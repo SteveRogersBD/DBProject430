@@ -42,7 +42,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         Picasso.get().load(postItem.image).into(holder.postImage);
         holder.username.setText(postItem.userId+"");
         holder.createdAt.setText(postItem.createdAt.toString());
-        holder.commentCount.setText(postItem.commentCount);
+        holder.commentCount.setText(postItem.commentCount+"");
     }
 
     @Override

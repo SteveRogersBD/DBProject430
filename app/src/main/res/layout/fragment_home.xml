@@ -16,7 +16,8 @@
         android:queryHint="Search here..."
         android:iconifiedByDefault="false"
         android:padding="5dp"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/search_view_bg"/>
 
     <!-- ScrollView for Remaining Layout -->
     <ScrollView
@@ -71,6 +72,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
+                    android:id="@+id/articles"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Articles"
@@ -117,6 +119,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/error_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="20sp"
+                android:textColor="@color/black"/>
 
         </LinearLayout>
     </ScrollView>

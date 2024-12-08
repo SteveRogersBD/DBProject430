@@ -7,6 +7,7 @@ import com.example.greenpulse.R;
 import com.example.greenpulse.RetrofitInstance;
 import com.example.greenpulse.responses.ImageResponse;
 import com.example.greenpulse.responses.NewsResponse;
+import com.example.greenpulse.responses.YoutubeVideo;
 
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class NewsApiUtil {
     private Context context;
     public static final int NEWS = 1;
     public static final int IMAGES = 2;
+    public static final int VIDEOS = 3;
 
     public NewsApiUtil(Context context) {
         this.context = context;
@@ -34,7 +36,6 @@ public class NewsApiUtil {
             @Override
             public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
                 callBack.onSuccess(response.body().news_results);
-                Toast.makeText(context, response.body().toString(), Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -55,6 +56,8 @@ public class NewsApiUtil {
         {
             call =(Call<T>) newsApi.getNews(context.getString(R.string.newApiKey),
                     "google_news",query,"us","en");
+        } else if (tag==VIDEOS) {
+            call =(Call<T>) newsApi.getVideos(context.getString(R.string.newApiKey),"youtube_video",query);
         }
         call.enqueue(new Callback<T>() {
             @Override
@@ -71,6 +74,9 @@ public class NewsApiUtil {
                         {
                             NewsResponse newsResponse = (NewsResponse) response.body();
                             newsCallBack2.onSuccess((List<T>) newsResponse.news_results);
+                        } else if (tag==VIDEOS) {
+                            YoutubeVideo videos = (YoutubeVideo) response.body();
+                            newsCallBack2.onSuccess((List<T>)videos.video_results);
                         }
                     }
                     catch(Exception e)

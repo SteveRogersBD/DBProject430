@@ -136,10 +136,11 @@ public class AnalyzeActivity extends OtherActivity {
 
     private void updateByGemini(String result) {
         runOnUiThread(()->{
-            Toast.makeText(this, result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, result, Toast.LENGTH_LONG).show();
             Intent intent = new Intent(AnalyzeActivity.this,DiseaseActivity.class);
             intent.putExtra("disease",result);
             intent.putExtra("crop",diseasedCrop.getName());
+            startActivity(intent);
             overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
         });
     }

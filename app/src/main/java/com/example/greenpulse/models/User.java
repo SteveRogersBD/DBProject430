@@ -1,26 +1,18 @@
 package com.example.greenpulse.models;
 
-import java.util.List;
-
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@NoArgsConstructor
 public class User {
-    public String username;
-    public String email;
-    public String password;
-    public int age;
-    public List<Double> location;
+    private String username;
+    private String email;
+    private String password;
+    private String role;
+    private String dp;
 
-
-    public User(String username, String email, String password, int age, List<Double> location) {
+    public User(String username, String email, String password, String role, String dp) {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.age = age;
-        this.location = location;
+        this.role = role;
+        this.dp = dp;
     }
 
     public String getUsername() {
@@ -47,19 +39,21 @@ public class User {
         this.password = password;
     }
 
-    public int getAge() {
-        return age;
+    public String getRole() {
+        return role;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setRole(String role) {
+        this.role = role;
     }
 
-    public List<Double> getLocation() {
-        return location;
+    public String getDp() {
+        return dp;
     }
 
-    public void setLocation(List<Double> location) {
-        this.location = location;
+    public void setDp(String dp) {
+        this.dp = dp;
     }
+
+
 }

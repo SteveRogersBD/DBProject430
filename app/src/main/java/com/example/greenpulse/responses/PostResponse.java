@@ -9,11 +9,11 @@ public class PostResponse {
     public int statusCode;
     public Data data;
     public class Data{
-        public Object postId;
+        public int postId;
         public String title;
         public String content;
         public String image;
-        public LocalDateTime createdAt;
+        public String createdAt;
         public int userId;
         public int commentCount;
     }

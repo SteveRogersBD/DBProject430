@@ -16,66 +16,62 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.greenpulse.R;
 import com.example.greenpulse.responses.YouTubeResponse;
+import com.example.greenpulse.responses.YoutubeVideo;
 
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> {
+public class YoutubeAdapter extends RecyclerView.Adapter<YoutubeAdapter.ViewHolder>{
 
-    private final Context context;
-    private final List<YouTubeResponse.Datum> list; // Assuming 'Item' is the video data object.
+    Context context;
+    List<YoutubeVideo.VideoResult>videos;
 
-    public VideoAdapter(Context context, List<YouTubeResponse.Datum> list) {
+    public YoutubeAdapter(Context context, List<YoutubeVideo.VideoResult> videos) {
         this.context = context;
-        this.list = list;
+        this.videos = videos;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Inflate the video item layout
-        View view = LayoutInflater.from(context).inflate(R.layout.video_layout, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.video_layout,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // Get the video item
-        YouTubeResponse.Datum item = list.get(position);
+        YoutubeVideo.VideoResult item = videos.get(position);
 
         // Set video title
         holder.caption.setText(item.title);
 
         // Set channel name
-        holder.chanelName.setText(item.channelTitle);
+        holder.chanelName.setText(item.channel.name);
 
         // Set published date
-        holder.publishedDate.setText(item.publishedTimeText);
+        holder.publishedDate.setText(item.published_date);
 
         // Load video thumbnail using Glide
-//        Glide.with(context)
-//                .load(item.thumbnail.get(0).url)
-//                .into(holder.videoThumbnail);
+        Glide.with(context)
+                .load(item.thumbnail.mystatic)
+                .into(holder.videoThumbnail);
 
         // Load channel thumbnail (if available) using Glide
         Glide.with(context)
-                .load(item.channelThumbnail.get(0).url)
+                .load(item.channel.thumbnail)
                 .into(holder.chanelThumbnail);
 
         // Set view count (if available in statistics)
-        if (item.viewCount != null) {
-            holder.views.setText(formatViews(item.viewCount));
-        }
+        holder.views.setText(item.views);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Get the video ID from the item (using the `videoId` field)
-                String videoId = item.videoId;
 
                 // Create the URL for the YouTube video
-                String videoUrl = "https://www.youtube.com/watch?v=" + videoId;
+                String videoUrl = item.link;
 
                 // Create an intent to open the video in the YouTube app or browser
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(videoUrl));
@@ -95,10 +91,9 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return list != null ? list.size() : 0;
+        return videos.size();
     }
 
-    // ViewHolder class
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView videoThumbnail;
         CircleImageView chanelThumbnail;
@@ -112,19 +107,6 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
             chanelName = itemView.findViewById(R.id.chanel_name);
             views = itemView.findViewById(R.id.views_video);
             publishedDate = itemView.findViewById(R.id.date_video);
-        }
-    }
-
-    // Helper method to format view count
-    private String formatViews(String viewCount) {
-        if (viewCount == null) return "N/A";
-        long views = Long.parseLong(viewCount);
-        if (views >= 1_000_000) {
-            return (views / 1_000_000) + "M views";
-        } else if (views >= 1_000) {
-            return (views / 1_000) + "K views";
-        } else {
-            return views + " views";
         }
     }
 }

@@ -34,8 +34,8 @@ public class WeatherResponse {
         public int pres;
         public int rh;
         public int slp;
-        public int snow;
-        public int snow_depth;
+        public double snow;
+        public double snow_depth;
         public int sunrise_ts;
         public int sunset_ts;
         public double temp;

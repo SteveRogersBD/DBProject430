@@ -29,6 +29,7 @@ import android.widget.Toast;
 import com.example.greenpulse.OtherActivity;
 import com.example.greenpulse.R;
 import com.example.greenpulse.databinding.ActivityMapBinding;
+import com.example.greenpulse.models.Event;
 import com.example.greenpulse.models.Field;
 import com.example.greenpulse.models.MyLatLng;
 import com.example.greenpulse.models.Task;
@@ -38,6 +39,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
@@ -69,8 +71,9 @@ public class MapActivity extends OtherActivity implements OnMapReadyCallback {
     List<MyLatLng>myPointList;
     List<Circle> circles = new ArrayList<>();
     Polygon polygon;
-    DatabaseReference fieldDb;
+    DatabaseReference fieldDb,eventDb;
     List<Field>myFields;
+    List<Event>events;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,7 +82,9 @@ public class MapActivity extends OtherActivity implements OnMapReadyCallback {
         pointList = new ArrayList<>();
         myPointList = new ArrayList<>();
         myFields = new ArrayList<>();
+        events = new ArrayList<>();
         fieldDb = FirebaseDatabase.getInstance().getReference().child("fields");
+        eventDb = FirebaseDatabase.getInstance().getReference().child("events");
 //        retrieveFields(fields -> {
 //            // This block will be executed once the data is successfully retrieved
 //            addFieldsOnMap(fields); // Add fields to map after data retrieval
@@ -98,6 +103,7 @@ public class MapActivity extends OtherActivity implements OnMapReadyCallback {
         binding.deleteButton.setOnClickListener((v)->{
             clearPolygons();
         });
+        binding.searchView.setBackground(getDrawable(R.drawable.search_view_bg));
         binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -135,7 +141,7 @@ public class MapActivity extends OtherActivity implements OnMapReadyCallback {
         mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
             @Override
             public void onMapLongClick(@NonNull LatLng latLng) {
-                Toast.makeText(MapActivity.this, "Long click!!!", Toast.LENGTH_SHORT).show();
+                callDialogue2Event(latLng);
             }
         });
 
@@ -398,6 +404,75 @@ public class MapActivity extends OtherActivity implements OnMapReadyCallback {
 
 
     }
+    private void callDialogue2Event(LatLng latLng){
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_layout);
+        dialog.setTitle("Create Entry");
+
+        Window window = dialog.getWindow();
+        if (window != null) {
+            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        }
+
+        TextInputEditText titleEditText = dialog.findViewById(R.id.edit_text_title);
+        TextInputEditText descriptionEditText = dialog.findViewById(R.id.edit_text_description);
+        AppCompatButton button = dialog.findViewById(R.id.done_btn);
+
+
+        button.setOnClickListener(v -> {
+            String title = titleEditText.getText().toString();
+            String description = descriptionEditText.getText().toString();
+
+            // Validate inputs
+            if (title.isEmpty()) {
+                titleEditText.setError("Enter a title");
+                return;
+            }
+            if (description.isEmpty()) {
+                descriptionEditText.setError("Enter a description");
+                return;
+            }
+
+            // Populate myPointList with LatLng values
+
+
+            // Create Field object and save to database
+            Event myEvent = new Event(title, description,latLng.latitude,latLng.longitude);
+            eventDb.child(myEvent.title).setValue(myEvent);
+            events.add(myEvent);
+            // Display success message and dismiss the dialog
+            Toast.makeText(this, "Event Added!!!", Toast.LENGTH_SHORT).show();
+            drawCircle(myEvent);
+            dialog.dismiss();
+        });
+
+        dialog.show();
+
+
+    }
+
+    private void drawCircle(Event event) {
+        // Define the circle's properties
+        LatLng latLng = new LatLng(event.lat,event.lon);
+        CircleOptions circleOptions = new CircleOptions()
+                .center(latLng) // The center of the circle
+                .radius(100) // Radius of the circle in meters (you can adjust this)
+                .strokeColor(Color.RED) // Color of the circle's border
+                .strokeWidth(3) // Stroke width
+                .fillColor(Color.argb(50, 255, 0, 0)); // Fill color with transparency (red in this case)
+
+        // Add the circle to the map
+        mMap.addCircle(circleOptions);
+        MarkerOptions markerOptions = new MarkerOptions()
+                .position(latLng) // Set the position (LatLng)
+                .title(event.title) // Optional: Set a title for the marker (appears when you tap the marker)
+                .snippet(event.description) // Optional: Set a snippet (description) for the marker
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)); // Optional: Set marker icon
+
+        // Add the marker to the map
+        mMap.addMarker(markerOptions);
+    }
+
 
     public interface DataRetrievalCallback {
         void onDataRetrieved(List<Field> fields);

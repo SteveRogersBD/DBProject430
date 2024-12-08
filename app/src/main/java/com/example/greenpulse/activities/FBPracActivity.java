@@ -1,31 +1,19 @@
 package com.example.greenpulse.activities;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.greenpulse.OtherActivity;
-import com.example.greenpulse.R;
 import com.example.greenpulse.databinding.ActivityFbpracBinding;
 import com.example.greenpulse.models.Field;
-import com.example.greenpulse.models.MyLatLng;
-import com.example.greenpulse.models.Task;
-import com.example.greenpulse.models.User;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
 public class FBPracActivity extends OtherActivity {

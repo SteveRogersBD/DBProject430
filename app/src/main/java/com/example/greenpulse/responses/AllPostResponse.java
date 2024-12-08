@@ -13,7 +13,7 @@ public class AllPostResponse {
         public String title;
         public String content;
         public String image;
-        public LocalDateTime createdAt;
+        public String createdAt;
         public int userId;
         public int commentCount;
     }

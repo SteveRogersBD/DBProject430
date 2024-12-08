@@ -26,7 +26,7 @@ public class StartingActivity extends BaseActivity {
         binding.startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(StartingActivity.this, MainActivity.class));
+                startActivity(new Intent(StartingActivity.this, SignUpActivity.class));
                 overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
 
             }

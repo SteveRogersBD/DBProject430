@@ -38,10 +38,10 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         WeatherResponse.Datum day = days.get(position);
 
-        holder.percip.setText((int) day.precip);
-        holder.humi.setText(day.rh);
-        holder.wind.setText((int) day.wind_spd);
-        holder.temp.setText((int) day.temp+" F");
+        holder.percip.setText(day.precip+"");
+        holder.humi.setText(day.rh+"");
+        holder.wind.setText(day.wind_spd+"");
+        holder.temp.setText(day.temp+" F");
         holder.desc.setText(day.weather.description);
         holder.date.setText(day.datetime);
 
