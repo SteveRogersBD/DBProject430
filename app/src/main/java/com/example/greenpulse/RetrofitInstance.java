@@ -9,11 +9,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitInstance {
-    public static final Retrofit VideoFit = new Retrofit.Builder().
-            baseUrl("https://yt-api.p.rapidapi.com/").
-            addConverterFactory(GsonConverterFactory.create())
-            .build();
-
     public static final Retrofit NewsFit = new Retrofit.Builder().
             baseUrl("https://serpapi.com/").
             addConverterFactory(GsonConverterFactory.create())
@@ -24,13 +19,10 @@ public class RetrofitInstance {
             .build();
 
     public static final Retrofit GPFit = new Retrofit.Builder().
-            baseUrl("http://192.168.1.249:8080/").
+            baseUrl("http://192.168.68.57:8080/").
             addConverterFactory(GsonConverterFactory.create())
             .build();
 
-    public static VideoApi videoApi(){
-        return VideoFit.create(VideoApi.class);
-    }
     public static NewsApi newsApi(){return NewsFit.create(NewsApi.class);}
     public static WeatherApi weatherApi(){return WeatherFit.create(WeatherApi.class);}
     public static GPApi gpApi(){return GPFit.create(GPApi.class);}

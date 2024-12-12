@@ -1,4 +1,4 @@
-package com.example.greenpulse.activities.requests;
+package com.example.greenpulse.requests;
 
 public class RegisterRequest {
     private String username;

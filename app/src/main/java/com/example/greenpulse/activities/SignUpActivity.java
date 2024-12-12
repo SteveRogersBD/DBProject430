@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.example.greenpulse.MainActivity;
 import com.example.greenpulse.OtherActivity;
 import com.example.greenpulse.R;
-import com.example.greenpulse.activities.requests.RegisterRequest;
+import com.example.greenpulse.requests.RegisterRequest;
 import com.example.greenpulse.RetrofitInstance;
 import com.example.greenpulse.SharedPrefManager;
 import com.example.greenpulse.apiInterfaces.GPApi;

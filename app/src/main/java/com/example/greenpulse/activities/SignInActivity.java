@@ -11,7 +11,7 @@ import com.example.greenpulse.MainActivity;
 import com.example.greenpulse.R;
 import com.example.greenpulse.RetrofitInstance;
 import com.example.greenpulse.SharedPrefManager;
-import com.example.greenpulse.activities.requests.LogInRequest;
+import com.example.greenpulse.requests.LogInRequest;
 import com.example.greenpulse.apiInterfaces.GPApi;
 import com.example.greenpulse.databinding.ActivitySignInBinding;
 import com.example.greenpulse.responses.UserResponse;

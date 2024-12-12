@@ -9,7 +9,7 @@ public class UserResponse {
         public int userId;
         public String username;
         public String email;
-        public Object dp;
+        public String dp;
         public String role;
     }
 }

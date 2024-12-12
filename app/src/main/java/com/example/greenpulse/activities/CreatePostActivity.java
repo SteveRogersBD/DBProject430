@@ -14,6 +14,7 @@ import android.provider.MediaStore;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.greenpulse.MainActivity;
 import com.example.greenpulse.OtherActivity;
 import com.example.greenpulse.R;
 import com.example.greenpulse.RetrofitInstance;
@@ -63,11 +64,14 @@ public class CreatePostActivity extends OtherActivity {
             if (selectedImageUri != null) {
                 try {
                     createPost(title, des, selectedImageUri);
+                    Toast.makeText(this, "Post Created Successfully!!!",
+                            Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(CreatePostActivity.this, MainActivity.class));
                 } catch (IOException e) {
-                    Toast.makeText(this, "Error creating post: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Error creating post: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 }
             } else {
-                Toast.makeText(this, "Please select an image!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Please select an image!", Toast.LENGTH_LONG).show();
             }
 
         });
@@ -119,15 +123,15 @@ public class CreatePostActivity extends OtherActivity {
 
         // Prepare the image file
         File file = new File(getRealPathFromURI(imageUri));
-        RequestBody requestFile = RequestBody.create(MediaType.parse(getContentResolver().getType(imageUri)), file);
+        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
         MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName(), requestFile);
 
         // Prepare text fields as RequestBody
-        //RequestBody titlePart = RequestBody.create(MediaType.parse("text/plain"), title);
-        //RequestBody descriptionPart = RequestBody.create(MediaType.parse("text/plain"), description);
+        RequestBody titlePart = RequestBody.create(MediaType.parse("text/plain"), title);
+        RequestBody descriptionPart = RequestBody.create(MediaType.parse("text/plain"), description);
 
         // Make the API call
-        Call<PostResponse> call = gpApi.createPost(1L, title, description, body);  // Assume 1L is the userId, update accordingly
+        Call<PostResponse> call = gpApi.createPost(1L, titlePart, descriptionPart, body);  // Assume 1L is the userId, update accordingly
         call.enqueue(new Callback<PostResponse>() {
             @Override
             public void onResponse(Call<PostResponse> call, Response<PostResponse> response) {
@@ -146,11 +150,11 @@ public class CreatePostActivity extends OtherActivity {
     }
 
     private String getRealPathFromURI(Uri uri) {
-        String[] projection = {MediaStore.Images.Media.DATA};
-        Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
+//        String[] projection = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();
-            int columnIndex = cursor.getColumnIndex(projection[0]);
+            int columnIndex = cursor.getColumnIndex("_data");
             String filePath = cursor.getString(columnIndex);
             cursor.close();
             return filePath;

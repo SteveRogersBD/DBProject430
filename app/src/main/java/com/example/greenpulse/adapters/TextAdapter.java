@@ -5,6 +5,7 @@ import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,10 +21,12 @@ public class TextAdapter extends RecyclerView.Adapter<TextAdapter.ViewHolder>{
 
     Context context;
     List<String>titles;
+    OnItemClickListener onItemClickListener;
 
-    public TextAdapter(Context context, List<String> titles) {
+    public TextAdapter(Context context, List<String> titles, OnItemClickListener clickListener) {
         this.context = context;
         this.titles = titles;
+        this.onItemClickListener = clickListener;
     }
 
     @NonNull
@@ -40,8 +43,12 @@ public class TextAdapter extends RecyclerView.Adapter<TextAdapter.ViewHolder>{
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                onItemClickListener.onClick(item);
             }
         });
+    }
+    public interface OnItemClickListener{
+        public void onClick(String item);
     }
 
     @Override

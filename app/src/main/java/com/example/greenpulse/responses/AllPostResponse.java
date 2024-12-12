@@ -9,7 +9,7 @@ public class AllPostResponse {
     public int statusCode;
     public ArrayList<Datum> data;
     public class Datum{
-        public Object postId;
+        public int postId;
         public String title;
         public String content;
         public String image;

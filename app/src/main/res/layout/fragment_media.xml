@@ -27,12 +27,20 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
             />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/post_recycler"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/post_item_layout" />
+            android:layout_gravity="center">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/post_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/post_item_layout" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
     </LinearLayout>
 
 </LinearLayout>
