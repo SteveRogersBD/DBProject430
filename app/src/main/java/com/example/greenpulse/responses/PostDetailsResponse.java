@@ -7,11 +7,14 @@ public class PostDetailsResponse {
     public String message;
     public int statusCode;
     public Data data;
-    public class Comment{
+    public static class Comment{
         public String comment;
-        public Object createdAt;
+        public String createdAt;
         public User user;
         public int id;
+
+        public Comment() {
+        }
     }
 
     public class Data{

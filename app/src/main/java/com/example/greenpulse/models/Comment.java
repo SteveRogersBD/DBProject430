@@ -1,5 +1,8 @@
 package com.example.greenpulse.models;
 
 public class Comment {
-    private String comment;
+    public String status;
+    public String message;
+    public int statusCode;
+    public String data;
 }

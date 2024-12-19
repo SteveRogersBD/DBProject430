@@ -1,5 +1,6 @@
 package com.example.greenpulse.apiInterfaces;
 
+import com.example.greenpulse.models.Comment;
 import com.example.greenpulse.requests.LogInRequest;
 import com.example.greenpulse.requests.RegisterRequest;
 import com.example.greenpulse.responses.AllPostResponse;
@@ -17,6 +18,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface GPApi {
     @POST("user/register")
@@ -45,4 +47,10 @@ public interface GPApi {
 
     @GET("post/get/id/{id}")
     Call<PostDetailsResponse>getPostDetails(@Path("id") Long id);
+
+    @POST("comment/create/user/{userId}/post/{postId}")
+    Call<Comment>createComment(@Path("userId") Long userId,
+                               @Path("postId") Long postId,
+                               @Query("comment") String comment);
+
 }

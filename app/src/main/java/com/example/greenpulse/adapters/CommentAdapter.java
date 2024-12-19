@@ -23,6 +23,12 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
 
     Context context;
     List<PostDetailsResponse.Comment>comments;
+
+    public CommentAdapter(Context context, List<PostDetailsResponse.Comment> comments) {
+        this.context = context;
+        this.comments = comments;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -36,7 +42,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         holder.username.setText(comment.user.username);
         holder.role.setText(comment.user.role);
         getCreatedAt(holder.pubDate,comment.createdAt.toString());
-        Picasso.get().load(comment.user.dp).into(holder.dp);
+        Picasso.get().load(comment.user.dp).error(R.drawable.user).into(holder.dp);
         holder.content.setText(comment.comment);
     }
 
